@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block content %}
+<style>
+table , th, td{
+   border: 1px solid black;
+}
+tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+th {
+    background-color: blue;
+    color: white;
+}
+</style>
+<table>
+  <h1>My Blog</h1>
+  <tr>
+    <th>title</th>
+    <th>date</th>
+    <th>author</th>
+    <th>body</th>
+  </tr>
+  {% for post in posts %}
+    <h2>
+  
+  <tr>
+    <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></td>
+    <td> drafted {{ post.publish }}</td>
+    <td>by {{ post.author }}</td>
+    <td>{{ post.body|truncatewords:30|linebreaks }}</td>
+  </tr>
+      
+    </h2>
+   
+    
+  {% endfor %}
+  
+</table>
+{% endblock %}
